@@ -8,7 +8,7 @@
 	<packaging>war</packaging>
 
 	<name>TBME Labs - Static mail server</name>
-	<description>Used to send emails from static webservers.</description>
+	<description>Used to send mails from static web pages.</description>
 
 	<properties>
 		<start-class>ch.tbmelabs.mailserver.Application</start-class>
@@ -86,4 +86,28 @@
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+
+	<reporting>
+		<plugins>
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<show>public</show>
+					<nohelp>true</nohelp>
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
