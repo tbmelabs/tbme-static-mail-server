@@ -4,7 +4,7 @@
 	<groupId>ch.tbmelabs</groupId>
 	<artifactId>static-mail-server</artifactId>
 
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.2.0</version>
 	<packaging>war</packaging>
 
 	<name>TBME Labs - Static mail server</name>

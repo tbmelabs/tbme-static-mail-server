@@ -25,6 +25,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     http.csrf().disable()
 
-        .authorizeRequests().antMatchers("/send-mail").permitAll().anyRequest().anonymous();
+        .authorizeRequests().antMatchers("/send-mail/*").permitAll().anyRequest().anonymous();
   }
 }

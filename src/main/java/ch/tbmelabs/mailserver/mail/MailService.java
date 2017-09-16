@@ -12,16 +12,20 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import ch.tbmelabs.mailserver.resource.model.Mail;
+import ch.tbmelabs.mailserver.resource.repository.MailCRUDRepository;
 
 @Service
 public class MailService {
   private static final Logger LOGGER = LogManager.getLogger(MailService.class);
 
-  @Value("${spring.mail.username}")
-  private String smtpAddress;
-
   @Autowired
   private JavaMailSender mailSender;
+
+  @Autowired
+  private MailCRUDRepository mailRepository;
+
+  @Value("${spring.mail.username}")
+  private String smtpAddress;
 
   public void sendMail(Mail mail) {
     LOGGER.info("Sending email from " + mail.getSender() + " to " + mail.getReceiver());
@@ -41,5 +45,7 @@ public class MailService {
     } catch (MessagingException e) {
       throw new IllegalArgumentException(e);
     }
+
+    mailRepository.save(mail);
   }
 }
